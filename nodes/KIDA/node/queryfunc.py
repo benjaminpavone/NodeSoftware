@@ -344,8 +344,8 @@ def parseComplexQuery(q):
         
         
         if not isinstance(child, Q):
-            print ('child')
-            print (child)
+            # print ('child')
+            # print (child)
             key = child[0]
             value = child[1]
             keySplit = key.split('__')
@@ -355,13 +355,13 @@ def parseComplexQuery(q):
             tabPrefix.append(prefix)
             
         else:
-            print ('une liste')
+            # print ('une liste')
             child2 = child.children
             connector = child.connector
             
             for sChild in child.children:
-                print (sChild)
-                print ('\n\n')
+                # print (sChild)
+                # print ('\n\n')
                 key = sChild[0]
                 value = sChild[1]
                 keySplit = key.split('__')
@@ -372,9 +372,9 @@ def parseComplexQuery(q):
 
             
         for index, key in enumerate(tabKey):
-            print (tabKey[index])
-            print (tabValue[index])
-            print (tabPrefix[index])
+            # print (tabKey[index])
+            # print (tabValue[index])
+            # print (tabPrefix[index])
             prefix = tabPrefix[index]
             value = tabValue[index]
             key = tabKey[index]
@@ -469,7 +469,7 @@ def parseComplexQuery(q):
                 if connector == 'OR':
                     searchChannels = union(searchChannels, channels)
                     
-                print ("apres AND/OR " + str(len(searchChannels)))
+                # print ("apres AND/OR " + str(len(searchChannels)))
 
             if prefix == 'source':
                 newKeyValue = key.replace('source__','')
@@ -552,19 +552,19 @@ def parseComplexQuery(q):
         ch.Products = []
 
         if ch.reaction.family == "Surface":
-            print ('remove only surface'+ str(ch.id))
+            print ('remove surface '+ str(ch.id))
             nbRemoved += 1
             channels.remove(ch)
             continue
         
         if ch.reaction.family == "3Body":
-            print ('remove only 3body' + str(ch.id))
+            print ('remove 3body ' + str(ch.id))
             nbRemoved += 1
             channels.remove(ch)
             continue
         
         if ch.isOnlyPlaneto():
-            print ('remove only planeto'+ str(ch.id))
+            print ('remove planeto '+ str(ch.id))
             nbRemoved += 1
             channels.remove(ch)
             continue
@@ -758,10 +758,10 @@ def parseComplexQuery(q):
         
             ch.DataSets.append(dataset)
     
-    print ("avant truncated" + str(len(channels)))
+    print ("before truncated" + str(len(channels)))
     if truncated > 0:
         channels = channels[0:TRANSLIM]
-    print ("apres truncated" + str(len(channels)))
+    print ("after truncated" + str(len(channels)))
     
     relatedSpecies = list(set(relatedSpecies))
     
