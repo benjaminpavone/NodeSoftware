@@ -160,7 +160,7 @@ class CvCosmic(Model):
 
 class CvSurface(Model):
     id = IntegerField(primary_key=True)
-    channel = ForeignKey(Channel, unique=True, null=True, blank=True)
+    channel = OneToOneField(Channel)
     application = CharField(max_length=255L, blank=True)
     class Meta:
         db_table = 'cv_surface'
@@ -169,9 +169,9 @@ class CvTermo(Model):
     id = IntegerField(primary_key=True)
     channel = ForeignKey(Channel, null=True, blank=True)
     formula = ForeignKey('Formula', null=True, blank=True)
-    k0 = ForeignKey('K0Value', unique=True, null=True, blank=True)
-    kinf = ForeignKey('KinfValue', unique=True, null=True, blank=True)
-    fc = ForeignKey('FcValue', unique=True, null=True, blank=True)
+    k0 = OneToOneField('K0Value')
+    kinf = OneToOneField('KinfValue')
+    fc = OneToOneField('FcValue')
     tmin = IntegerField()
     tmax = IntegerField()
     expertize = IntegerField()
